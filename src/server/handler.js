@@ -1,4 +1,4 @@
-const predictClassification = require('../services/inferenceService');
+const { getWikipedia, predictClassification } = require('../services/inferenceService');
 const storeData = require('../services/storeData');
 const crypto = require('crypto');
 const getHistories = require("../services/getHistories");
@@ -8,13 +8,15 @@ async function postPredictHandler(request, h) {
   const { model } = request.server.app;
  
   const { label } = await predictClassification(model, image);
+  const { description, url } = await getWikipedia(label);
   const id = crypto.randomUUID();
   const createdAt = new Date().toISOString();
  
   const data = {
     "id": id,
     "result": label,
-    "suggestion": label == 'Cancer' ? 'Segera periksa ke dokter!' : 'None',
+    "description": description,
+    "url": url,
     "createdAt": createdAt
   }
   
