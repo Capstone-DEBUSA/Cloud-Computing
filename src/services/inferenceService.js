@@ -1,8 +1,8 @@
 const tf = require('@tensorflow/tfjs-node');
 const InputError = require('../exceptions/InputError');
-const fetch = require('node-fetch');
 
 async function getWikipedia(label) {
+    const { default: fetch } = await import('node-fetch');
     const url = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(label)}`;
 
     try {
