@@ -1,7 +1,5 @@
 const { getWikipedia, predictClassification } = require('../services/inferenceService');
-const storeData = require('../services/storeData');
 const crypto = require('crypto');
-const getHistories = require("../services/getHistories");
 
 async function postPredictHandler(request, h) {
   const { image } = request.payload;
@@ -19,8 +17,6 @@ async function postPredictHandler(request, h) {
     "url": url,
     "createdAt": createdAt
   }
-  
-  await storeData(id, data);
 
   const response = h.response({
     status: 'success',
