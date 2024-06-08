@@ -1,4 +1,5 @@
 const { predictClassification, getWikipedia } = require('../services/inferenceService');
+const storeData = require('../services/storeData');
 const crypto = require('crypto');
 
 async function postPredictHandler(request, h) {
@@ -25,16 +26,8 @@ async function postPredictHandler(request, h) {
     data
   })
   response.code(201);
+  await storeData(id, data);
   return response;
 }
-
-async function getHistoriesHandler(_request, h) {
-    histories = await getHistories()
-    const response = h.response({
-        status: 'success',
-        data: histories
-    })
-    return response;
-}
  
-module.exports = {postPredictHandler, getHistoriesHandler};
+module.exports = postPredictHandler;
