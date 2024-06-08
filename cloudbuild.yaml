@@ -1,0 +1,29 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  dir: 'Cloud-Computing'
+  args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/my-docker-images-repo/svcdebusa:$COMMIT_SHA', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/my-docker-images-repo/svcdebusa:$COMMIT_SHA']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+    - 'beta'
+    - 'run'
+    - 'deploy'
+    - 'svc-debusa'
+    - '--image'
+    - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/my-docker-images-repo/svcdebusa:$COMMIT_SHA'
+    - '--region'
+    - 'asia-southeast2'
+    - '--platform'
+    - 'managed'
+    - '--min-instances'
+    - '0'
+    - '--max-instances'
+    - '5'
+    - '--allow-unauthenticated'
+images:
+- 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/my-docker-images-repo/svcdebusa'
