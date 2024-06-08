@@ -1,11 +1,11 @@
-const { getWikipedia, predictClassification } = require('../services/inferenceService');
+const { predictClassification, getWikipedia } = require('../services/inferenceService');
 const crypto = require('crypto');
 
 async function postPredictHandler(request, h) {
   const { image } = request.payload;
   const { model } = request.server.app;
  
-  const { label } = await predictClassification(model, image);
+  const { label, confidenceScore } = await predictClassification(model, image);
   const { description, url } = await getWikipedia(label);
   const id = crypto.randomUUID();
   const createdAt = new Date().toISOString();
@@ -15,12 +15,13 @@ async function postPredictHandler(request, h) {
     "result": label,
     "description": description,
     "url": url,
-    "createdAt": createdAt
+    "createdAt": createdAt,
+    "confidenceScore": confidenceScore
   }
 
   const response = h.response({
     status: 'success',
-    message: 'Model is predicted successfully',
+    message: confidenceScore > 99.50 ? 'Model is predicted successfully' : 'Model is predicted successfully but under threshold',
     data
   })
   response.code(201);
