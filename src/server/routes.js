@@ -13,11 +13,6 @@ const routes = [
         maxBytes: 5000000
       }
     }
-  },
-  {
-    path: '/predict/histories',
-    method: 'GET',
-    handler: getResultHandler
   }
 ]
  
