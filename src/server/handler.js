@@ -12,13 +12,12 @@ async function postPredictHandler(request, h) {
   const createdAt = new Date().toISOString();
  
   const data = {
-    "id": id,
-    "result": label,
-    "description": description,
-    "manfaat": manfaat,
-    "url": url,
-    "createdAt": createdAt,
-    "confidenceScore": confidenceScore,
+    "ID": id,
+    "Hasil": label,
+    description,
+    "Manfaat": manfaat,
+    "Untuk info lebih lengkap": url,
+    createdAt,
   }
 
   const response = h.response({
