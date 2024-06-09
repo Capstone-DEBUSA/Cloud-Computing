@@ -9,15 +9,19 @@ async function postPredictHandler(request, h) {
   const { label, confidenceScore, manfaat } = await predictClassification(model, image);
   const { description, url } = await getWikipedia(label);
   const id = crypto.randomUUID();
-  const createdAt = new Date().toISOString();
+  const createdAt = new Date();
+
+  const options = { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  const formattedDate = createdAt.toLocaleDateString('en-GB', options);
+  const formattedDateTime = `${formattedDate}`;
  
   const data = {
     "ID": id,
     "Hasil": label,
-    description,
+    [`Apa itu ${label}?`]: description,
     "Manfaat": manfaat,
     "Untuk info lebih lengkap": url,
-    createdAt,
+    "Dibuat pada": formattedDateTime,
   }
 
   const response = h.response({
