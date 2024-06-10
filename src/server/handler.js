@@ -16,12 +16,12 @@ async function postPredictHandler(request, h) {
   const formattedDateTime = `${formattedDate}`;
  
   const data = {
-    "ID": id,
-    "Hasil": label,
-    [`Apa itu ${label}?`]: description,
-    "Manfaat": manfaat,
-    "Untuk info lebih lengkap": url,
-    "Dibuat pada": formattedDateTime,
+    "id": id,
+    "result": label,
+    "description": description,
+    "benefit": manfaat,
+    "url": url,
+    "createdAt": formattedDateTime,
   }
 
   const response = h.response({
