@@ -54,12 +54,12 @@ const submitAnswerHandler = (request, h) => {
       if (isCorrect) {
         responseExplanation = foundQuestion.explanation;
         return h.response({
-          message: "Congratulations! You got it right!",
+          message: "Selamat! Kamu menjawab dengan benar!",
           "explanation": responseExplanation
         }).code(200);
       }
       return h.response ({
-        message: "Oops, wrong answer. Try again!"
+        message: "Yah, jawaban salah. Ayo coba lagi!"
       }).code(200);
     }
   }
