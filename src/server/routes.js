@@ -21,9 +21,8 @@ const routes = [
     handler: submitAnswerHandler,
     options: {
       payload: {
-        allow: 'application/json',
-        parse: true,
-        output: 'data'
+        allow: 'multipart/form-data',
+        multipart: true,
       }
     }
   },
