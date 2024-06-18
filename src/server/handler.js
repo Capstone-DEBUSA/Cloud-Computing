@@ -3,7 +3,7 @@ const getWikipedia = require('../services/wikipediaApi');
 const storeData = require('../services/storeData');
 const getQuestion = require('../features/quiz/index');
 const questions = require('../features/quiz/questions');
-const recipes = require('../features/recipes/recipeList');
+// const recipes = require('../features/recipes/recipeList');
 const crypto = require('crypto');
 const { request } = require('http');
 
@@ -68,7 +68,7 @@ const submitAnswerHandler = (request, h) => {
     ErrorEvent: "Question not found."
   }).code(404);
 };
-
+/*
 const getRecipesHandler = (request, h) => {
   const { label } = request.params;
   const selectedRecipes = recipes[label];
@@ -81,5 +81,6 @@ const getRecipesHandler = (request, h) => {
     error: "Recipe not found."
   }).code(404);
 }
+*/
 
-module.exports = { postPredictHandler, submitAnswerHandler, getRecipesHandler };
+module.exports = { postPredictHandler, submitAnswerHandler, /*getRecipesHandler*/ };

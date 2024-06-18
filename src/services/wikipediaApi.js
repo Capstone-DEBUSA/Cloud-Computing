@@ -1,6 +1,6 @@
 async function getWikipedia(label) {
     const { default: fetch } = await import('node-fetch');
-    const url = `https://id.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(label)}`;
+    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(label)}`;
 
     try {
         const response = await fetch(url);

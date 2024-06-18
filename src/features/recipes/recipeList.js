@@ -1,3 +1,4 @@
+/*
 const recipes = {
     "Apel": [
         {
@@ -489,3 +490,4 @@ const recipes = {
 };
   
   module.exports = recipes;
+*/

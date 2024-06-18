@@ -1,6 +1,6 @@
 const { postPredictHandler, 
         submitAnswerHandler,
-        getRecipesHandler } = require('../server/handler');
+        /*getRecipesHandler*/ } = require('../server/handler');
  
 const routes = [
   {
@@ -27,11 +27,13 @@ const routes = [
       }
     }
   },
+  /*
   {
     path: '/recipes/{label}',
     method: 'GET',
     handler: getRecipesHandler
   }
+  */
 ]
  
 module.exports = routes;
