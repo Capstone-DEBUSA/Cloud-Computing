@@ -7,7 +7,7 @@
 - initialize project and install libraries
 ```
 npm init --y
-npm install @hapi/hapi @tensorflow/tfjs-node@4.14.0 @google-cloud/firestore dotenv
+npm install @google-cloud/firestore @hapi/hapi @tensorflow/tfjs-node dotenv node-fetch
 npm install nodemon --save-dev
 ```
 - run server
@@ -15,7 +15,13 @@ npm install nodemon --save-dev
 npm run start:dev
 ```
 ### 3. Application Testing Using Postman in Local
-- POST http://0.0.0.0:3000/predict
+- POST http://localhost:3000/predict
 - in the Body section of the data form, key = image, value = upload image
 - SEND
 - display the result in JSON
+### 4. Deploy to Google Cloud Run
+- build Dockerfile
+- build docker image ```docker build -t gcr.io/capstone-buahsayur/debusa-app:latest .```
+- testing in local ```docker run -p 3000:3000 -e PORT=3000 gcr.io/capstone-buahsayur/debusa-app:latest```
+- push image to Artifact Registry ```docker push gcr.io/capstone-buahsayur/debusa-app:latest```
+- go to Cloud Run in GCP and create service with it
