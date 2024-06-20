@@ -21,7 +21,10 @@ npm run start:dev
 - display the result in JSON
 ### 4. Deploy to Google Cloud Run
 - build Dockerfile
-- build docker image ```docker build -t gcr.io/capstone-buahsayur/debusa-app:latest .```
-- testing in local ```docker run -p 3000:3000 -e PORT=3000 gcr.io/capstone-buahsayur/debusa-app:latest```
-- push image to Artifact Registry ```docker push gcr.io/capstone-buahsayur/debusa-app:latest```
+- build docker image
+```docker build -t gcr.io/capstone-buahsayur/debusa-app:latest .```
+- testing in local
+```docker run -p 3000:3000 -e PORT=3000 gcr.io/capstone-buahsayur/debusa-app:latest```
+- push image to Artifact Registry
+```docker push gcr.io/capstone-buahsayur/debusa-app:latest```
 - go to Cloud Run in GCP and create service with it
