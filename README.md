@@ -14,8 +14,8 @@ npm install nodemon --save-dev
 ```
 npm run start:dev
 ```
-### 3. Application Testing Using Postman
-- POST http://0.0.0.0/3000/predict
+### 3. Application Testing Using Postman in local
+- POST http://0.0.0.0:3000/predict
 - in the Body section of the data form, key = image, value = upload image
 - SEND
 - display the result in JSON
