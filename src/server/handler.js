@@ -54,11 +54,13 @@ const submitAnswerHandler = (request, h) => {
       if (isCorrect) {
         responseExplanation = foundQuestion.explanation;
         return h.response({
+          status: 'success',
           message: "Selamat! Kamu menjawab dengan benar!",
           "explanation": responseExplanation
         }).code(200);
       }
       return h.response ({
+        status: 'fail',
         message: "Yah, jawaban salah. Ayo coba lagi!"
       }).code(200);
     }
