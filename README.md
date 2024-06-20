@@ -1,4 +1,4 @@
-### 1. Saving the model in google cloud storage
+### 1. Saving the Model in Google Cloud Storage
 - create bucket
 - upload model tf.js to bucket
 - The model url is called by the .env file
@@ -14,7 +14,7 @@ npm install nodemon --save-dev
 ```
 npm run start:dev
 ```
-### 3. Application Testing Using Postman in local
+### 3. Application Testing Using Postman in Local
 - POST http://0.0.0.0:3000/predict
 - in the Body section of the data form, key = image, value = upload image
 - SEND
